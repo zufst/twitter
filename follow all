@@ -34,7 +34,7 @@ will give credit
     });
 
   const unfollowAll = async (followButtons) => {
-    console.log(`unfollowing ${followButtons.length} users`);
+    console.log(`following ${followButtons.length} users`);
     await Promise.all(
       followButtons.map(async (followButton) => {
         followButton && followButton.click();
