@@ -1,0 +1,73 @@
+#1 copy the code below
+#2 go over to https://twitter.com/[YOUR_USERNAME]/suggested (might also work on a user's following/your followers)
+#3 open inspect element. (ctrl shift + i) or click the 3 dots at the top of chrome -> more tools -> developer tools
+#4 click on console tab and paste the code below in and hit enter
+~ if it doesnt follow everyone just refresh and do it again.
+
+(THIS CAN GET YOU LIMITED/SUS'D, BE WARNED) 
+
+feel free to fix the code and make it shorter, it just changed on value from my other code. works fine though so no need really. dm me on twitter if u fixed it though,
+will give credit
+--
+
+
+
+
+
+(() => {
+  const $followButtons = '[data-testid$="-follow"]';
+  const $confirmButton = '[data-testid="confirmationSheetConfirm"]';
+
+  const retry = {
+    count: 0,
+    limit: 3,
+  };
+
+  const scrollToTheBottom = () => window.scrollTo(0, document.body.scrollHeight);
+  const retryLimitReached = () => retry.count === retry.limit;
+  const addNewRetry = () => retry.count++;
+
+  const sleep = ({ seconds }) =>
+    new Promise((proceed) => {
+      console.log(`waiting`);
+      setTimeout(proceed, seconds * 1000);
+    });
+
+  const unfollowAll = async (followButtons) => {
+    console.log(`unfollowing ${followButtons.length} users`);
+    await Promise.all(
+      followButtons.map(async (followButton) => {
+        followButton && followButton.click();
+        await sleep({ seconds: 1 });
+        const confirmButton = document.querySelector($confirmButton);
+        confirmButton && confirmButton.click();
+      })
+    );
+  };
+
+  const nextBatch = async () => {
+    scrollToTheBottom();
+    await sleep({ seconds: 1 });
+
+    const followButtons = Array.from(document.querySelectorAll($followButtons));
+    const followButtonsWereFound = followButtons.length > 0;
+
+    if (followButtonsWereFound) {
+      await unfollowAll(followButtons);
+      await sleep({ seconds: 2 });
+      return nextBatch();
+    } else {
+      addNewRetry();
+    }
+
+    if (retryLimitReached()) {
+      console.log(`no more accounts were found at this time`);
+      console.log(`if there are still people there just refresh and run the code again`);
+    } else {
+      await sleep({ seconds: 2 });
+      return nextBatch();
+    }
+  };
+
+  nextBatch();
+})();
