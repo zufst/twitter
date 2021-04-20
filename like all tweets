@@ -4,7 +4,7 @@
 #4 click on console tab and paste the code below in and hit enter
 ~ if it doesnt unlike all of them just refresh and do it again.
 
-(BE CAREFUL USING THIS)
+you can only like 300 a day using this, also be careful if you mass like without a phone number because you will most likely get suspended fast
 --
 
 setInterval(() => {
@@ -12,4 +12,4 @@ setInterval(() => {
     d.click()
   }
   window.scrollTo(0, document.body.scrollHeight)
-}, 1000) 
+}, 1000) -- can change just no point really
