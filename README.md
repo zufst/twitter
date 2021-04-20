@@ -1,2 +1,3 @@
 # twitter
-twitter code i use sometimes. i guess you can use it too. just give credit or whatever
+twitter things
+(ok)[https://discord.gg/GvKEHES4pC]
