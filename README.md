@@ -1,3 +1,3 @@
-# twitter
-twitter things
-https://discord.gg/GvKEHES4pC
+twitter shit for console code
+
+https://www.kagsmells.com
